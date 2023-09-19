@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe MenuItem, type: :model do
   subject {
-    menu = Menu.create(name: "lunch")
+    restaurant = Restaurant.create(name: "Burger King")
+    menu = Menu.create(name: "lunch", restaurant_id: restaurant.id)
     described_class.new(name: "Burger", price: 9, menu_id: menu.id)
   }
 

@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe Menu, type: :model do
   subject {
-    described_class.new(name: "lunch")
+    restaurant = Restaurant.create(name: "Burger King")
+    described_class.new(name: "Lunch", restaurant_id: restaurant.id)
   }
 
   describe "validation" do
