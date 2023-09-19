@@ -19,12 +19,20 @@ RSpec.describe Menu, type: :model do
 
   describe "association" do
     before do
+      menu_item = MenuItem.create(name: "Burger", price: 2, restaurant_id: subject.restaurant.id)
+      subject.menu_items << menu_item
       subject.save()
-      menu_item = MenuItem.create(name: "Burger", price: 2, menu_id: subject.id)
     end
 
-    it "is has many items" do
+    it "is has many menu items" do
       expect(subject.menu_items.count).to be(1)
+    end
+
+    it "is not valid if the menu item belongs to different Restaurant" do
+      restaurant2 = Restaurant.create(name: "McDonald")
+      menu_item = MenuItem.create(name: "Whooper", price: 3, restaurant_id: restaurant2.id)
+      subject.menu_items << menu_item
+      expect { subject.save!() }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end
