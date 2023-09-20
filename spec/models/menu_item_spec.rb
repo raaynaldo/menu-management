@@ -30,16 +30,22 @@ RSpec.describe MenuItem, type: :model do
       expect(subject).to be_valid
     end
 
-    it "is invalid if name is already exist in the same restaurant" do
+    it "is invalid if name and price are already exist in the same restaurant" do
       subject.save()
-      menu_item = described_class.new(name: "Burger", price: 5, restaurant_id: subject.restaurant_id)
+      menu_item = described_class.new(name: "Burger", price: 9, restaurant_id: subject.restaurant_id)
       expect(menu_item).to_not be_valid
     end
 
-    it "is valid if name is already exist in the different restaurant" do
+    it "is valid if name are already exist, but it has different price in the same restaurant" do
+      subject.save()
+      menu_item = described_class.new(name: "Burger", price: 10, restaurant_id: subject.restaurant_id)
+      expect(menu_item).to be_valid
+    end
+
+    it "is valid if name and price are already exist in the different restaurant" do
       subject.save()
       restaurant = Restaurant.create(name: "McDonald")
-      menu_item = described_class.new(name: "Burger", price: 5, restaurant_id: restaurant.id)
+      menu_item = described_class.new(name: "Burger", price: 9, restaurant_id: restaurant.id)
       expect(menu_item).to be_valid
     end
   end
@@ -61,6 +67,5 @@ RSpec.describe MenuItem, type: :model do
       subject.menus << menu
       expect { subject.save!() }.to raise_error(ActiveRecord::RecordInvalid)
     end
-
   end
 end
