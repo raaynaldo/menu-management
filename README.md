@@ -1,5 +1,10 @@
 # README
 
+## How to Run Testing
+```
+rails spec
+```
+
 ## How to Run Conversion Tool
 
 1. Go to terminal
@@ -23,7 +28,9 @@ load "conversion_tool_script.rb"
 ## Folow-up Questions
 
 **First Question**
+
 ![Follow Up Question 1](./docs/image/follow_up_question_1.png)
 
 **Second Question**
-![Follow Up Question 1](./docs/image/follow_up_question_2.png)
+
+![Follow Up Question 2](./docs/image/follow_up_question_2.png)
