@@ -16,5 +16,14 @@ load "conversion_tool_script.rb"
 ```
 
 ## Database Design
+
 [Link](https://dbdiagram.io/d/PopMenu-62e80172f31da965e856be83)
 ![Database Design](./docs/image/database_design.png)
+
+## Folow-up Questions
+
+**First Question**
+![Follow Up Question 1](./docs/image/follow_up_question_1.png)
+
+**Second Question**
+![Follow Up Question 1](./docs/image/follow_up_question_2.png)
